@@ -1,33 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import FrendsList from './Component/FriendsList/FriendsList'
+import { Form } from './Component/Form/Form'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [open, Setopen] = useState(false)
+  const [list, Setlist] = useState([])
+
+  function handleadd (item){
+    Setlist(()=>[...list , item])
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <FrendsList list={list} />
+      {
+        open && <Form add = {handleadd} />
+      }
+      <button onClick={() => Setopen(!open)} className="px-8 py-4 text-blue-950 bg-amber-500 rounded-2xl hover:shadow-2x" >{!open ? 'add frend' : 'close'}</button>
     </>
   )
 }
