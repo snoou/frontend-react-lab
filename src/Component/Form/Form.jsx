@@ -1,12 +1,12 @@
 import { useState } from "react"
-export function Form({add}) {
+export function Form({ add }) {
 
     const [img, Setimg] = useState("")
     const [name, Setname] = useState("")
     function Handelsub(e) {
         e.preventDefault();
         const id = crypto.randomUUID()
-        const newFrend =
+        const newFriend =
         {
             id,
             name,
@@ -14,22 +14,45 @@ export function Form({add}) {
             img,
         };
 
-        add(newFrend)
+        add(newFriend)
 
 
     }
 
 
-    return <form className="bg-blue-700 text-white w-2/6 p-10" onSubmit={Handelsub}>
-        <div className="flex gap-2">
-            <label for="name">name</label>
-            <input  onChange={(e) => Setname(e.target.value)} className="bg-blue-200" id="name" type="text" />
-        </div>
-        <div className="flex gap-2">
-            <label for="urlimg">url img</label>
-            <input value={img} onChange={(e) => Setimg(e.target.value)} className="bg-blue-200" id="urlimg" type="text" />
+    return <form
+        className="bg-slate-900 text-white w-full max-w-md p-8 rounded-2xl shadow-xl flex flex-col gap-6"
+        onSubmit={Handelsub}
+    >
+        <h2 className="text-2xl font-bold mb-2 text-blue-400">Add New Item</h2>
+
+        <div className="flex flex-col gap-2">
+            <label htmlFor="name" className="text-sm font-medium text-slate-300">Name</label>
+            <input
+                onChange={(e) => Setname(e.target.value)}
+                className="bg-slate-800 border border-slate-700 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                id="name"
+                type="text"
+                placeholder="Enter name..."
+            />
         </div>
 
-        <button className="px-8 py-4 text-blue-950 bg-amber-500 rounded-2xl hover:shadow-2x" >add</button>
+        <div className="flex flex-col gap-2">
+            <label htmlFor="urlimg" className="text-sm font-medium text-slate-300">Image URL</label>
+            <input
+                value={img}
+                onChange={(e) => Setimg(e.target.value)}
+                className="bg-slate-800 border border-slate-700 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                id="urlimg"
+                type="text"
+                placeholder="https://example.com/image.png"
+            />
+        </div>
+
+        <button
+            className="mt-4 px-6 py-3 text-white bg-blue-600 font-semibold rounded-lg hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all active:scale-95"
+        >
+            Add Item
+        </button>
     </form>
 }

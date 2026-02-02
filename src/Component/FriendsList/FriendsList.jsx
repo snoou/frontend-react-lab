@@ -1,13 +1,13 @@
-import { Frend } from '../Frend/Frend';
+import { Friend } from '../Friend/Friend';
 
-
-export default function FrendsList({list}) {
+export default function FriendsList({ list }) {
+    if (!list) return null;
 
     return (
-        <>
+        <div className="flex flex-col gap-1 max-w-lg">
             {list.map((item) => (
-                <Frend key={item.id} item={item} />
+                <Friend key={item.id} item={item} />
             ))}
-        </>
-    )
+        </div>
+    );
 }
